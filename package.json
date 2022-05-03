@@ -1,0 +1,72 @@
+{
+  "title": "SB Admin 2",
+  "name": "web",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "gulp watch"
+  },
+  "description": "An open source Bootstrap 4 admin theme.",
+  "keywords": [
+    "css",
+    "sass",
+    "html",
+    "responsive",
+    "theme",
+    "template",
+    "admin",
+    "app"
+  ],
+  "homepage": "https://startbootstrap.com/theme/sb-admin-2",
+  "bugs": {
+    "url": "https://github.com/StartBootstrap/startbootstrap-sb-admin-2/issues",
+    "email": "feedback@startbootstrap.com"
+  },
+  "license": "(ISC)",
+  "author": "Start Bootstrap",
+  "contributors": [
+    "David Miller (https://davidmiller.io/)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StartBootstrap/startbootstrap-sb-admin-2.git"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "5.15.3",
+    "axios": "^0.26.1",
+    "bootstrap": "4.6.0",
+    "chart.js": "2.9.4",
+    "cheerio": "^1.0.0-rc.10",
+    "datatables.net-bs4": "^1.11.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.2",
+    "jquery": "3.6.0",
+    "jquery.easing": "^1.4.1",
+    "mariadb": "^3.0.0",
+    "memorystore": "^1.6.7",
+    "mongoose": "^6.2.10",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.18.0",
+    "sequelize-cli": "^6.4.1",
+    "serve-static": "^1.15.0",
+    "static": "^0.4.7"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.9",
+    "del": "6.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-clean-css": "4.3.0",
+    "gulp-header": "2.0.9",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "3.0.2",
+    "merge-stream": "2.0.0"
+  },
+  "main": "start.js"
+}

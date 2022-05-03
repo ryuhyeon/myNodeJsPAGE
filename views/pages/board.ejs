@@ -1,0 +1,99 @@
+<div class="container-fluid">
+
+
+<!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Board</h1>
+    <p class="mb-4">TESTING</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">게시판</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class='border-bottom-dark'>
+                        <tr>
+                            <td width="10%">#</td><td width="60%">Title</td><td width="20%">Writer</td><td width="10%">Views</td>
+                        </tr>
+                    </thead>
+                    <tbody id="board_data" class='border-bottom-dark'>
+                
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <button class="btn btn-warning btn-circle"><i class="fas fa-pen"></i></button>
+                            </td>
+                            <td></td><td></td>
+                            <td>
+                                <button class="btn btn-primary btn-circle" id='prevBtn' onClick="pageNo--;$('#board_data').empty();loadList();"><i class="fas fa-angle-left"></i></button>
+                                <button class="btn btn-primary btn-circle" id='nextBtn' onClick="pageNo++;$('#board_data').empty();loadList();"><i class="fas fa-angle-right"></i></button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="vendor/jquery-tmpl-master/jquery.tmpl.js"></script>
+<script>
+    var pageNo=1;
+    var lastPageNo=0;
+    var loadList=function(){
+        var markup='<tr onclick=location.href="/board/view/${board_no}"><td>${board_no}</td><td>${board_title}</td><td>${board_writer}</td><td>${board_views}</td></tr>';
+        $.template("board_data",markup);
+        $.ajax({
+            url: `http://localhost:3000/data/mydata/boarddata/${pageNo}`,              //ajax로 ajax_xml.xml파일을 불러온다.
+            //url: "/data/air_data.json",
+            cache: false,                     //사용자캐시를 사용할 것인가.
+            dataType: "json",                  //서버로부터 받을 것으로 예상되는 데이터 타입.
+            success: function(data){          //ajax요청을 통해 반환되는 데이터 data.
+                var d=data;
+                console.log(d);
+                console.log(d[0]);
+                $.tmpl("board_data",d).appendTo("#board_data");
+            }
+        });
+        buttonReload();
+    };
+    var buttonReload=function(){
+        if(pageNo<=1){
+            $('#prevBtn').hide();
+        }else{
+            $('#prevBtn').show();
+        }
+        if(pageNo==lastPageNo){
+            $('#nextBtn').hide();
+        }else{
+            $('#nextBtn').show();
+        }
+    }
+
+    
+    $(function(){
+        $.ajax({
+            url:`http://localhost:3000/data/mydata/boardAmount`,
+            cache:false,
+            dataType:"json",
+            success: function (data){
+                console.log(data[0].amount);
+                lastPageNo=data[0].amount/5;
+                lastPageNo=Math.ceil(lastPageNo);
+            }
+        });
+        loadList();
+        
+        /*
+        
+        $.getJSON('data/jquery_tmpl_dummy_data.json',function(data){
+            js_data=data;
+            
+        });
+        */
+    });
+    
+</script>

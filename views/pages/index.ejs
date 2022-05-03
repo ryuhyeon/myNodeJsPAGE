@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    
+
+<div class="jumbotron">
+    <!-- Page Heading -->
+    <div id="carouselWrapper" style="max-width: 600px;">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        <ul class="carousel-indicators"> 
+            <li data-target="#carouselExampleFade" data-slide-to="0" class="active" aria-current="true" aria-label="Slide 0"></li> <!--0번부터시작--> 
+            <li data-target="#carouselExampleFade" data-slide-to="1" aria-label="Slide 1"></li> 
+            <li data-target="#carouselExampleFade" data-slide-to="2" aria-label="Slide 2"></li> 
+            <li data-target="#carouselExampleFade" data-slide-to="3" aria-label="Slide 3"></li> 
+        </ul>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/main_visual.jpg" class="d-block w-100" alt="first" style="z-index: -5;">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/main_visual_03.jpg" class="d-block w-100" alt="second" style="z-index: -5;">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/main_visual_04.jpg" class="d-block w-100" alt="..." style="z-index: -5;">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/main_visual_06.jpg" class="d-block w-100" alt="..." style="z-index: -5;">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#" data-target="#carouselExampleFade" data-slide="prev"> 
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
+            <!-- <span>Previous</span> --> 
+        </a>
+        <a class="carousel-control-next" href="#" data-target="#carouselExampleFade" data-slide="next"> 
+            <span class="carousel-control-next-icon" aria-hidden="true"></span> 
+            <!-- <span>Next</span> --> 
+        </a>
+    </div>
+    </div>
+    in jumbotron
+</div>
+
+    <h1 class="h3 mb-4 text-gray-800">Index Page</h1>
+    
+    <br>
+    hihi
+    
+    <h2><%-session%></h2>
+    <br/>
+    <% if(isLogin==true){%>
+      <h1><%-user_id%>님 안녕하세요!</h1>
+    <%}%>
+
+</div>
+<script>
+  $(function(){
+    console.log('<%-id%>');
+  })
+
+</script>

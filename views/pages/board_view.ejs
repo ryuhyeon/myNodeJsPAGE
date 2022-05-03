@@ -1,0 +1,35 @@
+<div class="container-fluid">
+
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Board</h1>
+    <p class="mb-4">TESTING</p>
+    
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">게시판</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+    
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td width="80%" colspan="5"><h2><%-data[0].board_title%></h2></td>
+                    </tr>
+                    <tr class='border-bottom-dark'>
+                        <td><h4><%-data[0].board_writer%></h4></td><td width="7%"><p style="font-size: 3pt;"><%-data[0].chg_date%></p></td><td width='60%'></td><td width="5%">Views</td><td><%-data[0].board_views%></td>
+                    </tr>
+                    </thead>
+                    <tbody id="board_data" class='border-bottom-dark'>
+                        <tr height="300px"><td colspan="5"><div style="padding:5px;"><%- data[0].board_title %></div></td></tr> 
+                    </tbody>
+                    <tfoot>
+                        <tr><td></td><td></td><td></td><td></td><td><button class="btn btn-success btn-circle" onclick="location.href='/board'"><i class="fas fa-list"></i></button></td>
+                    </tfoot>
+                </table>
+            </div>
+    </div>
+    <script src="vendor/jquery-tmpl-master/jquery.tmpl.js"></script>
+    

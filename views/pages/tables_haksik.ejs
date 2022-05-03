@@ -1,0 +1,43 @@
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">학식표</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <tbody>
+                        <% var d=['월','화','수','목','금']; %>
+                        <% for(var day=0;day<5;day++){ %>
+                            <tr>
+                                <td style="text-align:center;vertical-align: middle;"><%-d[day]%></td>
+                                <td style="word-break:break-all" class="border-left-warning">
+                                    <ul>
+                                        <% for(var i=0;i<dd[day].length;i++){ %>
+                                            <li>
+                                            <%=dd[day][i]%>
+                                            </li>
+                                        <%}%>
+                                    </ul>
+                                </td>
+                            </tr>
+                        <% } %>
+
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+ 
+</script>

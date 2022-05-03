@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">JQuery Template</h1>
+    <p class="mb-4">TESTING</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>지역</th>
+                            <th>확진자 수</th>
+                            <th>전일대비 증감</th>
+                            <th>사망자 수</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody id="air-data">
+                        
+                        
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="vendor/jquery-tmpl-master/jquery.tmpl.js"></script>
+<script src="/js/xml2json.js"></script>
+<script>
+    function getYmd10() {
+    //yyyy-mm-dd 포맷 날짜 생성
+        var d = new Date();
+        return ""+ d.getFullYear()  + ((d.getMonth() + 1) > 9 ? (d.getMonth() + 1).toString() : "0" + (d.getMonth() + 1))  + (d.getDate() > 9 ? d.getDate().toString() : "0" + d.getDate().toString());
+    }
+
+    $(function(){
+        
+        var markup="<tr><td>${gubun}</td><td>${defCnt}</td><td>${incDec}</td><td>${deathCnt}</td></tr>";
+        $.template("air_data",markup);
+        var date=getYmd10();
+        $.ajax({
+            url: "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=Lpf%2BUzX8pyGD2qc00I1isA7P7HwVmE93JfHZGvwlHu3kh2azXsKK%2FnNcsTOWKGNydN%2Bs26flhd5OWk0krPIH2Q%3D%3D&pageNo=1&numOfRows=10&startCreateDt="+date+"&endCreateDt="+date,              //ajax로 ajax_xml.xml파일을 불러온다.
+            //url: "/data/air_data.json",
+            cache: false,                     //사용자캐시를 사용할 것인가.
+            dataType: "json",                  //서버로부터 받을 것으로 예상되는 데이터 타입.
+            success: function(data){          //ajax요청을 통해 반환되는 데이터 data.
+                console.log(data.response.body.items.item)
+                var d=data.response.body.items.item;
+                console.log(d);
+                $.tmpl("air_data",d).appendTo("#air-data");
+            }
+        });
+
+        /*
+        
+        $.getJSON('data/jquery_tmpl_dummy_data.json',function(data){
+            js_data=data;
+            
+        });
+        */
+    });
+    
+</script>
+
+
